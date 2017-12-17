@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <FrameLayout
+        android:layout_margin="1dp"
+        android:padding="5dp"
+        android:background="@drawable/solid"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/list_pic"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ListView
+            android:id="@+id/music_listview"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+    <Button
+        android:background="@drawable/solid"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:id="@+id/saomiao"
+        android:text="扫描音乐"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content" /></LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>

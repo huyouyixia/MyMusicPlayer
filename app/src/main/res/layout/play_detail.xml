@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <TextView
+            android:lines="1"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/solid"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:id="@+id/detail_title"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:id="@+id/detail_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:id="@+id/detail_lir"
+            android:text="暂无歌词"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+    <SeekBar
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:id="@+id/seekbar"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:background="@drawable/solid"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_marginLeft="10dp"
+            android:text="上一首"
+            android:id="@+id/previous_music"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="播放"
+            android:layout_width="0dp"
+            android:id="@+id/play_or_pause"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_marginRight="10dp"
+            android:text="下一首"
+            android:layout_width="0dp"
+            android:id="@+id/next_music"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
