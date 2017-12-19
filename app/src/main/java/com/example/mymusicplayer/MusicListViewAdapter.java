@@ -1,6 +1,7 @@
 package com.example.mymusicplayer;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class MusicListViewAdapter extends ArrayAdapter {
     private int resId;
-    private Music music;
+    private ListViewTextColor textColor;
     private List<File> musicList;
     private static final String TAG="MusicListViewAdapter";
     @NonNull
@@ -35,6 +36,11 @@ public class MusicListViewAdapter extends ArrayAdapter {
         }
         TextView musicText = view.findViewById(R.id.music_name);
         musicText.setText(musicFile.getName());
+        textColor = new ListViewTextColor();
+        if(textColor.isSuccess()){
+            musicText.setTextColor(Color.WHITE);
+        }
+
         return view;
     }
 

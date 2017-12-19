@@ -74,9 +74,6 @@ public class MyMedia {
     public String getSourceFile(){
         return sourceFile;
     }
-    public int getMusicSeek(){
-        return musicLength;
-    }
     public String getTitle(){
         String titleText = new File(sourceFile).getName().replace(".mp3","");
         return titleText;

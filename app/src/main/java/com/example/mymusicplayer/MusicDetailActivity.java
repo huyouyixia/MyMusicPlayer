@@ -1,8 +1,10 @@
 package com.example.mymusicplayer;
 
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,15 +31,23 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
     private static MyMedia myMedia = new MyMedia();
     private MediaPlayer mediaPlayer ;
     private int playing =0;
+    private ImageView detailBackgroundPic;
     private static List<File> musicList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_detail);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String pic =  preferences.getString("listPic",null);
+
         mediaPlayer = myMedia.getMediaPlayer();
         musicList = myMedia.getMusicList();
         Log.d(TAG, "onCreate: musicList=" + musicList.size());
         initLayout();
+        if(pic!=null){
+            Glide.with(this).load(pic).crossFade(1000).into(detailBackgroundPic);
+            new ListViewTextColor().setSuccess(true);
+        }
         //定时器，更新进度条
         handler.postDelayed(t,200);
     }
@@ -58,6 +70,8 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
         nextMusic.setOnClickListener(this);
         playORpause.setOnClickListener(this);
         seekBar = (SeekBar)findViewById(R.id.seekbar);
+        ablumPic = (ImageView)findViewById(R.id.detail_pic);
+        detailBackgroundPic = (ImageView)findViewById(R.id.detail_backpic);
         textPauseOrPlay();
         //使用timer会出现随机播放失败MediaPlayer（-38,0）
 //        timer.schedule(new TimerTask() {

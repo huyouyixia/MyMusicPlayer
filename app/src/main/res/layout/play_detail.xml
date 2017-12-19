@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/detail_backpic"
+        android:scaleType="centerCrop"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,7 +19,7 @@
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
             android:paddingBottom="20dp"
-            android:background="@drawable/solid"
+
             android:gravity="center"
             android:textSize="20sp"
             android:layout_width="match_parent"
@@ -17,9 +27,10 @@
             android:layout_height="wrap_content" />
 
         <ImageView
-            android:layout_margin="5dp"
-            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:padding="1dp"
             android:layout_gravity="center"
+            android:scaleType="fitCenter"
             android:id="@+id/detail_pic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -42,7 +53,6 @@
         android:id="@+id/seekbar"
         android:layout_height="wrap_content" />
     <LinearLayout
-        android:background="@drawable/solid"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -69,3 +79,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</FrameLayout>
