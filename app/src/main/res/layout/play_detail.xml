@@ -35,7 +35,9 @@
                 android:layout_width="25dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="25dp" />
+            <!--文字左右滚动-->
             <TextView
+                android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:gravity="center"

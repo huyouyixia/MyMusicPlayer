@@ -1,12 +1,16 @@
 package com.example.mymusicplayer;
 
 import android.media.MediaPlayer;
+import android.text.TextUtils;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by wentaodeng on 2017/12/11.
@@ -77,5 +81,16 @@ public class MyMedia {
     public String getTitle(){
         String titleText = new File(sourceFile).getName().replace(".mp3","");
         return titleText;
+    }
+    public void paomadeng(TextView textView){
+        Log.d(TAG, "paomadeng: 进入跑马灯设置了");
+        //跑马灯
+        textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        //这条必须设置，不然不会滚动
+        textView.setSingleLine(true);
+        textView.setSelected(true);
+        textView.setFocusable(true);
+        textView.setFocusableInTouchMode(true);
+        textView.setMarqueeRepeatLimit(-1);
     }
 }

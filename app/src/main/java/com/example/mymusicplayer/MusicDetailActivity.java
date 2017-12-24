@@ -64,6 +64,7 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
         ablumPic = (ImageView)findViewById(R.id.detail_pic);
         lyric = (TextView)findViewById(R.id.detail_lir);
         title.setText(myMedia.getTitle());
+        myMedia.paomadeng(title);
         previosMusic = (Button)findViewById(R.id.previous_music);
         nextMusic = (Button)findViewById(R.id.next_music);
         playORpause = (Button)findViewById(R.id.play_or_pause);
@@ -191,17 +192,26 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
     }
     private Handler handler = new Handler();
     private Runnable t = new Runnable() {
+        int j ;
         @Override
         public void run() {
             if(!isFinishing()){
                 textPauseOrPlay();
+
                 handler.postDelayed(this,300);
-                title.setText(myMedia.getTitle());
                 seekBar.setMax(mediaPlayer.getDuration());
-                seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                j = mediaPlayer.getCurrentPosition();
+                seekBar.setProgress(j);
+                //因为线程有延时，代码运行需要时间，所以到这的时候已经大于300
+                if(j<=330){
+                    title.setText(myMedia.getTitle());
+                    //跑马灯
+                    myMedia.paomadeng(title);
+                }
 //                Log.d(TAG, "run: 进入了run");
             }
 
         }
     };
+
 }
