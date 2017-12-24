@@ -18,7 +18,7 @@ import java.util.List;
  * Created by wentaodeng on 2017/12/11.
  */
 
-public class MusicListViewAdapter extends ArrayAdapter {
+public class MusicListViewAdapter extends ArrayAdapter<String> {
     private int resId;
     private ListViewTextColor textColor;
     private List<File> musicList;
@@ -45,8 +45,8 @@ public class MusicListViewAdapter extends ArrayAdapter {
     }
 
     public MusicListViewAdapter(Context context, int textViewResourceId, List objects) {
-        super(context, textViewResourceId, objects);
+        super(context, textViewResourceId,objects);
         resId = textViewResourceId;
-        musicList = objects;
+        musicList =(List<File> )objects;
     }
 }

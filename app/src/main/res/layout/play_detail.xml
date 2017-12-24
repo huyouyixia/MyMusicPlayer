@@ -1,31 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
-    <ImageView
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.design.widget.CollapsingToolbarLayout
         android:layout_width="match_parent"
-        android:id="@+id/detail_backpic"
-        android:scaleType="centerCrop"
-        android:layout_height="match_parent" />
-
-    <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-        <TextView
-            android:lines="1"
-            android:paddingTop="20dp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="20dp"
-
-            android:gravity="center"
-            android:textSize="20sp"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        >
+        <ImageView
+            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
-            android:id="@+id/detail_title"
-            android:layout_height="wrap_content" />
-
+            android:id="@+id/detail_backpic"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent" />
+    </android.support.design.widget.CollapsingToolbarLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <Button
+                android:id="@+id/back_button"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_back"
+                android:layout_width="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="25dp" />
+            <TextView
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:id="@+id/detail_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+        </LinearLayout>
         <ImageView
             android:layout_margin="1dp"
             android:padding="1dp"
@@ -47,12 +66,12 @@
             android:text="暂无歌词"
             android:layout_weight="1"
             android:layout_height="0dp" />
-    <SeekBar
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:id="@+id/seekbar"
-        android:layout_height="wrap_content" />
-    <LinearLayout
+        <SeekBar
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:id="@+id/seekbar"
+            android:layout_height="wrap_content" />
+        <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -78,5 +97,6 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-</LinearLayout>
-</FrameLayout>
+        </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

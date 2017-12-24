@@ -32,6 +32,7 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
     private MediaPlayer mediaPlayer ;
     private int playing =0;
     private ImageView detailBackgroundPic;
+    private Button backButon;
     private static List<File> musicList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,8 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
         seekBar = (SeekBar)findViewById(R.id.seekbar);
         ablumPic = (ImageView)findViewById(R.id.detail_pic);
         detailBackgroundPic = (ImageView)findViewById(R.id.detail_backpic);
+        backButon = (Button)findViewById(R.id.back_button);
+        backButon.setOnClickListener(this);
         textPauseOrPlay();
         //使用timer会出现随机播放失败MediaPlayer（-38,0）
 //        timer.schedule(new TimerTask() {
@@ -170,6 +173,10 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
                     mediaPlayer.start();
                 }
                 break;
+            case R.id.back_button:
+                finish();
+//                Toast.makeText(this,"点击了返回",Toast.LENGTH_SHORT).show();
+                break;
             default:
                 break;
         }
@@ -182,8 +189,8 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
         playing = myMedia.getPlayingIndex();
         Log.d(TAG, "initPreviousNext:获取到的playing=" + playing);
     }
-   private Handler handler = new Handler();
-   private Runnable t = new Runnable() {
+    private Handler handler = new Handler();
+    private Runnable t = new Runnable() {
         @Override
         public void run() {
             if(!isFinishing()){

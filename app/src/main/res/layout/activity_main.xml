@@ -4,17 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     >
-    <FrameLayout
-        android:orientation="vertical"
+    <android.support.design.widget.CoordinatorLayout
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:scaleType="centerCrop"
-            android:id="@+id/listpic"
-            android:background="@android:color/transparent"
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+            <ImageView
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:id="@+id/listpic"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.design.widget.CollapsingToolbarLayout>
         <ListView
             android:id="@+id/music_listview"
             android:layout_gravity="left"
@@ -22,7 +29,7 @@
             android:layout_height="match_parent">
         </ListView>
 
-    </FrameLayout>
+    </android.support.design.widget.CoordinatorLayout>
     <LinearLayout
         android:layout_margin="5dp"
         android:padding="5dp"

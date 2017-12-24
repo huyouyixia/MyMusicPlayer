@@ -22,25 +22,27 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
+import static com.example.mymusicplayer.URLConnectionUtil.getInputFromHttp;
+
 public class MainActivity extends AppCompatActivity {
+
     private static final String TAG ="MainActivity";
     private static final String bUrl = "https://cn.bing.com";
+
     //创建数据库
     private MyDatabaseHelper helper;
     private ListView musicLview;
@@ -78,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String pic =  preferences.getString("listPic",null);
         if(pic!=null){
-            Glide.with(this).load(pic).crossFade(1000)
-                    .bitmapTransform(new BlurTransformation(this,17)).into(listPic);
+            Glide.with(this).load(pic)
+                    .bitmapTransform(new BlurTransformation(this,13)).into(listPic);
             new ListViewTextColor().setSuccess(true);
         }else {
 
@@ -183,29 +185,34 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initListPic() throws IOException {
        String resultText = "";
-        InputStream is = getInputFromHttp(bUrl+"/HPImageArchive.aspx?format=js&idx=0&n=1");
-        int ind = 0;
-        byte[] bytes = new byte[1024];
-        while((ind = is.read(bytes))>-1){
-            resultText += new String(bytes,0,ind);
-        }
-        is.close();
+        resultText = getInputFromHttp(bUrl+"/HPImageArchive.aspx?format=js&idx=0&n=1",true);
         //获取到的所有字符串
         Log.d(TAG, "getInputFromHttp: 必应网站字符串，每日一图:" + resultText);
-        resultText = resultText.substring(resultText.indexOf("url\":\"")+6
-                ,resultText.lastIndexOf(".jpg"))+".jpg";
-        Log.d(TAG, "initListPic: 获取链接的后半部分=" + resultText);
-        //拼接链接
-        resultText = bUrl + resultText;
-        Log.d(TAG, "initListPic: 拼接后的连接：" + resultText);
+        JSONObject jO;
+        JSONArray ja ;
+        JSONObject jOb;
+        try {
+            int ind ;
+            jO = new JSONObject(resultText);
+            ja = jO.getJSONArray("images");
+            for(ind =0; ind<ja.length(); ind++){
+                jOb = ja.getJSONObject(ind);
+                resultText = String.valueOf(jOb.get("url"));
+                Log.d(TAG, "initListPic: stmp=" + resultText);
+            }
+            resultText = bUrl+resultText;
+            Log.d(TAG, "initListPic: resultText=" + resultText);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        final String sr = resultText;
+        Log.d(TAG, "initListPic: sr=" + sr);
         SharedPreferences.Editor editor = PreferenceManager
                 .getDefaultSharedPreferences(MainActivity.this).edit();
-        editor.putString("listPic",resultText);
+        editor.putString("listPic",sr);
         editor.apply();
-        OkHttpClient okClient = new OkHttpClient();
-        Request request = new Request.Builder().url(resultText).build();
-        final String  re = resultText;
-        okClient.newCall(request).enqueue(new Callback() {
+
+        URLConnectionUtil.sendOkHttp(sr,new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 runOnUiThread(()->{
@@ -217,28 +224,15 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
 
                 runOnUiThread(()->{
-                    Glide.with(MainActivity.this).load(re)
-                            .bitmapTransform(new BlurTransformation(MainActivity.this,17)).into(listPic);
+                    Glide.with(MainActivity.this).load(sr)
+                            .bitmapTransform(new BlurTransformation(MainActivity.this,13)).into(listPic);
                     new ListViewTextColor().setSuccess(true);
                 });
             }
         });
+
+
     }
 
-    public InputStream getInputFromHttp(String urlPath){
-        try {
-            URL url = new URL(urlPath);
-            Log.d(TAG, "getInputFromHttp: url=" + urlPath);
-            HttpURLConnection hConnect = (HttpURLConnection)url.openConnection();
-            hConnect.setDoOutput(true);
-            hConnect.setDoInput(true);
-            InputStream is = hConnect.getInputStream();
-            return is;
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 }
