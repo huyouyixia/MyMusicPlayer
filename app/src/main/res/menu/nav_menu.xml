@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/alarm"
+            android:id="@+id/menu_alarm"
+            android:title="定时播放"/>
+        <item
+            android:icon="@drawable/search"
+            android:title="扫描本地音乐"
+            android:id="@+id/menu_search_all"
+            />
+        <item
+            android:icon="@drawable/repeat"
+            android:title="循环模式"
+            android:id="@+id/menu_loopmoudle"
+            />
+
+    </group>
+</menu>

@@ -17,7 +17,7 @@ import static android.content.ContentValues.TAG;
  */
 
 public class MyMedia {
-    private static MediaPlayer mediaPlayer = new MediaPlayer();
+    private static MediaPlayer mediaPlayer;
     private static int playingIndex = 0;
     private static String sourceFile = "";
     private static int musicLength;
@@ -30,7 +30,8 @@ public class MyMedia {
         if(mediaPlayer.isPlaying()){
             mediaPlayer.stop();
         }
-        mediaPlayer.reset();
+
+       mediaPlayer.reset();
         try {
             mediaPlayer.setDataSource(sourceF);
             mediaPlayer.prepare();
@@ -74,6 +75,9 @@ public class MyMedia {
     }
     public MediaPlayer getMediaPlayer(){
         return mediaPlayer;
+    }
+    public void setMediaPlayer(MediaPlayer mediaPlayer) {
+        MyMedia.mediaPlayer = mediaPlayer;
     }
     public String getSourceFile(){
         return sourceFile;

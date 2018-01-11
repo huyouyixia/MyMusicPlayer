@@ -9,18 +9,20 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by wentaodeng on 2017/12/13.
  */
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
+    //需要静态，不然容易出现没有播放退出之后再次进入不搜索数据库
     private SQLiteDatabase db;
+    private final static String TAG = "MyDatabaseHelper";
     private static final String CREATE_MUSIC = "create table Music("+
             "id integer primary key autoincrement,"
             +" musicName text,"
-            +" musicPath text,"
-            +" musicLength text)";
+            +" musicPath text,musicLength text);";
     private Context mContext;
     public MyDatabaseHelper(Context context, String name
             , SQLiteDatabase.CursorFactory factory, int version) {
@@ -37,7 +39,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("drop table if exists musicTable");
+        sqLiteDatabase.execSQL("drop table if exists Music");
         onCreate(sqLiteDatabase);
     }
     public String getSelected(SQLiteDatabase db ,String sql){
@@ -45,7 +47,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String result ="";
         for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
             result += cursor.getString(cursor.getColumnIndex("musicPath")) + "\n";
-            Log.d("myDatabaseHelper", "addMusicTableP: 查询数据库musicPath=" + result);
+            Log.d(TAG , "addMusicTableP: 查询数据库musicPath=" + result);
         }
         cursor.close();
         return result;
@@ -55,13 +57,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db = this.getWritableDatabase();
         //添加数据到数据库
         for(File f: musicList){
-            db.execSQL("insert into Music(musicName,musicPath,musicLength) values" +
-                    "(?,?,?)",new String[]{f.getName().toString()
-                    ,f.getPath().toString(),f.length()+""});
+            db.execSQL("insert into Music(musicName,musicPath,musicLength) values(?,?,?) "
+                    ,new String[]{f.getName().toString(),f.getPath().toString(), f.length()+""});
+            Log.d(TAG, "insertMydb: " + f.getName());
         }
-    }
-    public SQLiteDatabase getMydb(){
-
-        return this.db;
     }
 }

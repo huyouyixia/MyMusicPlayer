@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#f81"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:id="@+id/menu_header"
+    android:layout_height="180dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="1129984801@qq.com"
+        android:textSize="14sp"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:clickable="true"
+        android:id="@+id/search_location"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:background="#eec710"
+                android:gravity="center"
+                android:text="过滤文件"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/select_folder_back"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_back"
+                android:gravity="center" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <RadioGroup
+                android:id="@+id/radio_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/default_size_m"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:checked="true"
+                    android:text="忽略小于1M文件"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/default_size_500kb"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="忽略小于500KB文件"
+                    android:textSize="14sp" />
+            </RadioGroup>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:maxLength="4"
+                    android:id="@+id/user_custom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/solid"
+                    android:gravity="center"
+                    android:hint="自定义大小"
+                    android:lines="1" />
+            </LinearLayout>
+
+
+            <RadioGroup
+                android:id="@+id/radio_custom"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <RadioButton
+                    android:text="M"
+                    android:textSize="14sp"
+                    android:id="@+id/custom_m"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="center"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:text="KB"
+                    android:id="@+id/custom_kb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/search_folder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/solid"
+                android:padding="10dp"
+                android:text="扫描指定文件夹"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/search_all"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/solid"
+                android:padding="10dp"
+                android:text="全盘扫描"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

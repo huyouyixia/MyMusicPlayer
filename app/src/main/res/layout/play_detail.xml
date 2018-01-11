@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.design.widget.CoordinatorLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.CollapsingToolbarLayout
         android:layout_width="match_parent"
@@ -12,9 +13,9 @@
         android:fitsSystemWindows="true"
         >
         <ImageView
+            android:id="@+id/detail_backpic"
             android:fitsSystemWindows="true"
             android:layout_width="match_parent"
-            android:id="@+id/detail_backpic"
             android:scaleType="centerCrop"
             android:layout_height="match_parent" />
     </android.support.design.widget.CollapsingToolbarLayout>
@@ -74,31 +75,28 @@
             android:id="@+id/seekbar"
             android:layout_height="wrap_content" />
         <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_marginLeft="10dp"
-            android:text="上一首"
-            android:id="@+id/previous_music"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-        <Button
-            android:text="播放"
-            android:layout_width="0dp"
-            android:id="@+id/play_or_pause"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-        <Button
-            android:layout_marginRight="10dp"
-            android:text="下一首"
-            android:layout_width="0dp"
-            android:id="@+id/next_music"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/previous_music"
+                android:layout_width="48dp"
+                android:layout_margin="10dp"
+                android:layout_height="48dp" />
+            <Button
+                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="48dp"
+                android:id="@+id/play_or_pause"
+                android:layout_height="48dp" />
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="48dp"
+                android:id="@+id/next_music"
+                android:layout_height="48dp" />
+         </LinearLayout>
+
     </LinearLayout>
-
-        </LinearLayout>
-
 </android.support.design.widget.CoordinatorLayout>

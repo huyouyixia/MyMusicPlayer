@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+    </android.support.design.widget.CollapsingToolbarLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:background="#eec710"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="选择文件夹"
+                android:layout_height="40sp" />
+            <Button
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:background="@drawable/ic_back"
+                android:layout_width="30sp"
+                android:id="@+id/select_folder_back"
+                android:layout_alignParentLeft="true"
+                android:layout_height="30sp" />
+            <Button
+                android:background="#eec710"
+                android:id="@+id/folder_ok"
+                android:layout_width="wrap_content"
+                android:text="确定"
+                android:layout_alignParentRight="true"
+                android:layout_height="40sp" />
+        </RelativeLayout>
+      <RelativeLayout
+          android:layout_alignParentBottom="true"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <ListView
+
+              android:layout_width="match_parent"
+              android:id="@+id/folder_list"
+              android:layout_height="wrap_content">
+
+          </ListView>
+      </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

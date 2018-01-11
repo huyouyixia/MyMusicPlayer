@@ -23,6 +23,16 @@ public class MusicListViewAdapter extends ArrayAdapter<String> {
     private ListViewTextColor textColor;
     private List<File> musicList;
     private static final String TAG="MusicListViewAdapter";
+    private int textId;
+
+    public int getTextId() {
+        return textId;
+    }
+
+    public void setTextId(int textId) {
+        this.textId = textId;
+    }
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -34,13 +44,14 @@ public class MusicListViewAdapter extends ArrayAdapter<String> {
         } else{
             view = convertView;
         }
-        TextView musicText = view.findViewById(R.id.music_name);
-        musicText.setText(musicFile.getName());
-        textColor = new ListViewTextColor();
-        if(textColor.isSuccess()){
-            musicText.setTextColor(Color.WHITE);
-        }
-
+//        TextView musicText = view.findViewById(R.id.music_name);
+//        musicText.setText(musicFile.getName());
+//        textColor = new ListViewTextColor();
+//        if(textColor.isSuccess()){
+//            musicText.setTextColor(Color.WHITE);
+//        }
+        TextView text = view.findViewById(getTextId());
+        text.setText(musicFile.getName());
         return view;
     }
 
@@ -49,4 +60,5 @@ public class MusicListViewAdapter extends ArrayAdapter<String> {
         resId = textViewResourceId;
         musicList =(List<File> )objects;
     }
+
 }

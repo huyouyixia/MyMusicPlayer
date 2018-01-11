@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:id="@+id/drawer"
     >
     <android.support.design.widget.CoordinatorLayout
         android:fitsSystemWindows="true"
@@ -26,33 +27,60 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <TextView
-            android:textSize="20sp"
-            android:gravity="center"
-            android:text="音乐列表"
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-        <ListView
-            android:id="@+id/music_listview"
-            android:layout_gravity="left"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </ListView>
+            <RelativeLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/mainTitle"
+                    android:layout_alignParentRight="true"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:text="音乐列表"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+                <Button
+                    android:padding="5dp"
+                    android:id="@+id/menu_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/menu_button"
+                    android:gravity="center"
+                    android:layout_width="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_height="30dp" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/music_listview"
+                android:layout_gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ListView>
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>
-    <LinearLayout
-        android:layout_margin="5dp"
-        android:padding="5dp"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-    <Button
-        android:background="@drawable/solid"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:id="@+id/saomiao"
-        android:text="扫描音乐"
-        android:layout_gravity="bottom"
-        android:layout_height="wrap_content" /></LinearLayout>
+    <android.support.design.widget.NavigationView
 
+        android:fitsSystemWindows="true"
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/menu_exit"
+                android:padding="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:text="退出"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

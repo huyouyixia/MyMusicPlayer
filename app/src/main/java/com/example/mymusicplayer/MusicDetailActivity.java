@@ -1,10 +1,13 @@
 package com.example.mymusicplayer;
 
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +22,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MusicDetailActivity extends AppCompatActivity implements View.OnClickListener{
+public class MusicDetailActivity extends BasicActivity implements View.OnClickListener{
     private static final String TAG="MusicDetailActivity";
     private TextView title;
     private ImageView ablumPic;
@@ -28,6 +31,7 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
     private Button playORpause;
     private Button nextMusic;
     private SeekBar seekBar;
+    //必须静态，
     private static MyMedia myMedia = new MyMedia();
     private MediaPlayer mediaPlayer ;
     private int playing =0;
@@ -37,6 +41,8 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.play_detail);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String pic =  preferences.getString("listPic",null);
@@ -69,6 +75,10 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
         nextMusic = (Button)findViewById(R.id.next_music);
         playORpause = (Button)findViewById(R.id.play_or_pause);
         previosMusic.setOnClickListener(this);
+
+        nextMusic.setBackgroundResource(R.drawable.next);
+        previosMusic.setBackgroundResource(R.drawable.previous);
+
         nextMusic.setOnClickListener(this);
         playORpause.setOnClickListener(this);
         seekBar = (SeekBar)findViewById(R.id.seekbar);
@@ -76,6 +86,9 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
         detailBackgroundPic = (ImageView)findViewById(R.id.detail_backpic);
         backButon = (Button)findViewById(R.id.back_button);
         backButon.setOnClickListener(this);
+        if(new ListViewTextColor().isSuccess()){
+            title.setTextColor(Color.WHITE);
+        }
         textPauseOrPlay();
         //使用timer会出现随机播放失败MediaPlayer（-38,0）
 //        timer.schedule(new TimerTask() {
@@ -132,9 +145,11 @@ public class MusicDetailActivity extends AppCompatActivity implements View.OnCli
     //播放、暂停按钮的状态现显示
     private void textPauseOrPlay(){
         if(mediaPlayer.isPlaying()){
-            playORpause.setText("暂停");
+//            playORpause.setText("暂停");
+            playORpause.setBackgroundResource(R.drawable.pause);
         }else{
-            playORpause.setText("播放");
+//            playORpause.setText("播放");
+            playORpause.setBackgroundResource(R.drawable.play);
         }
     }
     @Override
