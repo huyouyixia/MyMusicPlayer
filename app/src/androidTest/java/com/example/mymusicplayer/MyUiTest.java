@@ -4,6 +4,7 @@ import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Environment;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.BySelector;
@@ -43,7 +44,7 @@ public class MyUiTest {
         mDevices.swipe(500,600,100,600,20);
         mfindObject(By.res("com.tencent.ai.dobby.sugyvoice:id/btn_feedback")).click();
         Music music = new Music();
-        List<File> musicList = music.getMusicList();
+        List<File> musicList = music.getMusicList(Environment.getExternalStorageDirectory(),0);
         MyMedia myMedia = new MyMedia();
         myMedia.playList(musicList,0);
 

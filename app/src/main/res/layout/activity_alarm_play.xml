@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.mymusicplayer.AlarmPlayActivity">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:id="@+id/start_user"
+                    android:layout_width="wrap_content"
+                    android:text="开始时间"
+                    android:textSize="20sp"
+                    android:layout_height="40sp" />
+                <EditText
+                    android:layout_toEndOf="@+id/start_user"
+                    android:id="@+id/start_time_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:hint="输入时间：分钟" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/end_user"
+                    android:layout_margin="10dp"
+                    android:text="结束时间"
+                    android:textSize="20sp"
+                    android:layout_height="40sp" />
+                <EditText
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_toEndOf="@+id/end_user"
+                    android:id="@+id/end_time_edit"
+                    android:hint="输入时间：分钟"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <Button
+                android:id="@+id/user_ok"
+                android:layout_margin="10dp"
+                android:text="确认"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></Button>
+        </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

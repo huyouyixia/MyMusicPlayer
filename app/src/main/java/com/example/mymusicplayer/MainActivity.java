@@ -28,6 +28,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -146,6 +147,8 @@ public class MainActivity extends BasicActivity implements View.OnClickListener{
             switch (item.getItemId()){
                 case R.id.menu_alarm:
                     Toast.makeText(MainActivity.this,item.getTitle().toString(),Toast.LENGTH_SHORT).show();
+                    Intent alrmIntent = new Intent(this,AlarmPlayActivity.class);
+                    startActivity(alrmIntent);
                     break;
                 case R.id.menu_search_all:
 //                    Toast.makeText(MainActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();

@@ -25,7 +25,13 @@
             android:theme="@style/MusicTheme" />
         <activity android:name=".BasicActivity" />
         <activity android:name=".SearchMusicActivity" />
-        <activity android:name=".SearchFolderActivity"></activity>
+        <activity android:name=".SearchFolderActivity" />
+        <activity android:name=".AlarmPlayActivity" />
+
+        <service
+            android:name=".AlarmPlayService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

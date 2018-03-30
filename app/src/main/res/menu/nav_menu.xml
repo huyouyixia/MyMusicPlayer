@@ -14,6 +14,5 @@
             android:title="循环模式"
             android:id="@+id/menu_loopmoudle"
             />
-
     </group>
 </menu>
